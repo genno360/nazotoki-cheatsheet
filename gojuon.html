@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>50音表 | 謎解きチートシート</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← 謎解きチートシート</a>
+    <h1>50音表</h1>
+
+    <div class="toggle" role="tablist" aria-label="機能の切り替え">
+      <button type="button" role="tab" id="tab-table" aria-controls="panel-table" aria-selected="true">50音表</button>
+      <button type="button" role="tab" id="tab-convert" aria-controls="panel-convert" aria-selected="false">文字変換</button>
+    </div>
+
+    <!-- サブ機能1: 50音表 -->
+    <section class="panel" id="panel-table" role="tabpanel" aria-labelledby="tab-table">
+      <table class="gojuon" id="gojuon-table" aria-label="50音表"></table>
+    </section>
+
+    <!-- サブ機能2: 文字変換 -->
+    <section class="panel" id="panel-convert" role="tabpanel" aria-labelledby="tab-convert" hidden>
+      <label class="field-label" for="src">変換する文字(ひらがな・カタカナ)</label>
+      <input class="text-input" id="src" type="text" autocomplete="off" placeholder="例: なぞとき">
+
+      <div class="controls">
+        <button type="button" class="arrow-btn" id="arrow" aria-label="方向: 上(押すと45度回転)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <polyline points="5 11 12 4 19 11"/>
+          </svg>
+        </button>
+        <div class="control-group">
+          <span class="hint" id="dir-label">方向: 上</span>
+          <label class="hint" for="num">ずらす数</label>
+          <select class="num-select" id="num"></select>
+        </div>
+      </div>
+
+      <div class="output-head">
+        <span class="field-label">出力結果</span>
+        <button type="button" class="copy-btn" id="copy">コピー</button>
+      </div>
+      <div class="output" id="out" aria-live="polite"></div>
+
+      <p class="note">
+        50音表の範囲外や空きマスにずれた文字は X になります。<br>
+        濁点・半濁点・小さい文字は元の文字(例: が→か、っ→つ)として扱います。
+      </p>
+    </section>
+  </main>
+
+  <script src="js/gojuon.js"></script>
+</body>
+</html>
