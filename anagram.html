@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>重み付きアナグラム器 | 謎解きチートシート</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← 謎解きチートシート</a>
+    <h1>重み付きアナグラム器</h1>
+    <p class="lead">文字を並べ替えて、日本語の単語らしい並びを上位から表示します。</p>
+
+    <label class="field-label" for="src">並べ替える文字(ひらがな)</label>
+    <input class="text-input" id="src" type="text" autocomplete="off" spellcheck="false">
+
+    <div class="button-row">
+      <button type="button" class="primary-btn" id="generate">生成</button>
+      <button type="button" class="copy-btn" id="example">別の例を入れる</button>
+    </div>
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <div class="output-head section-gap">
+      <span class="field-label">結果</span>
+      <span class="hint" id="result-info"></span>
+    </div>
+    <div class="output result-output" id="result" aria-live="polite">
+      <p class="placeholder">「生成」を押すと、単語らしい順に最大30件を表示します。</p>
+    </div>
+
+    <p class="note">
+      約1300語の単語リストから「ある文字の右隣・左隣にどの文字が来やすいか」の割合を集計し、その割合が高い並びほど上位にしています。<br>
+      入力できるのはひらがなと「ー」で、2〜20文字までです。入力と同じ並びは結果から除きます。
+    </p>
+  </main>
+
+  <script src="js/anagram-data.js"></script>
+  <script src="js/anagram.js"></script>
+</body>
+</html>

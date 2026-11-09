@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>しりとりグラフ | 謎解きチートシート</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← 謎解きチートシート</a>
+    <h1>しりとりグラフ</h1>
+    <p class="lead">単語をしりとりでつなげられる関係を矢印で表示し、最長のつながりを探します。</p>
+
+    <label class="field-label" for="words">単語(ひらがな・1行に1単語)</label>
+    <textarea class="text-input words-input" id="words" rows="6" spellcheck="false" autocomplete="off">しりとり
+りんご
+ごーや
+ごりら
+らすと</textarea>
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <div class="output-head section-gap">
+      <span class="field-label">グラフ</span>
+      <span class="hint" id="graph-info"></span>
+    </div>
+    <div class="graph-area" id="graph"></div>
+
+    <div class="output-head section-gap">
+      <span class="field-label">最長のしりとり</span>
+      <button type="button" class="copy-btn" id="copy">コピー</button>
+    </div>
+    <div class="output path-output" id="path" aria-live="polite"></div>
+
+    <p class="note">
+      濁点・半濁点・小さい文字は区別します(例: 「か」で終わる単語から「が」で始まる単語にはつながりません)。<br>
+      「ー」で終わる単語は、その直前の文字でつなげます。同じ単語が複数ある場合は1つにまとめます。
+    </p>
+  </main>
+
+  <script src="js/shiritori.js"></script>
+</body>
+</html>
