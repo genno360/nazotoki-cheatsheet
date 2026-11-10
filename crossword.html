@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>クロスワード盤面生成 | 謎解きチートシート</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← 謎解きチートシート</a>
+    <h1>クロスワード盤面生成</h1>
+    <p class="lead">入力した単語をすべて使い、1つにつながったクロスワードの盤面を作ります。</p>
+
+    <label class="field-label" for="words">単語(ひらがな・1行に1単語)</label>
+    <textarea class="text-input words-input" id="words" rows="6" spellcheck="false" autocomplete="off"></textarea>
+
+    <div class="button-row">
+      <button type="button" class="primary-btn" id="generate">生成</button>
+      <button type="button" class="copy-btn" id="example">別の例を入れる</button>
+    </div>
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <div class="section-gap" id="result" hidden>
+      <p class="status" id="status"></p>
+      <div class="board-nav" id="nav" hidden>
+        <button type="button" class="copy-btn" id="prev" aria-label="前の盤面">← 前</button>
+        <span class="hint" id="nav-label"></span>
+        <button type="button" class="copy-btn" id="next" aria-label="次の盤面">次 →</button>
+      </div>
+      <div class="board-wrap">
+        <div class="board" id="board" role="img" aria-label="クロスワードの盤面"></div>
+      </div>
+      <div class="clues" id="clues"></div>
+    </div>
+
+    <p class="note">
+      ルール: 単語はヨコ(左→右)かタテ(上→下)に置き、すべての単語が1つにつながるようにします。
+      タテ・ヨコに2文字以上続く並びは、すべて入力した単語のどれかになる必要があります。<br>
+      タテとヨコを入れ替えた(斜めに反転した)盤面は同じものとして数えます。<br>
+      最初に入っている例は、5×5マスで唯一解になる単語の組み合わせからランダムに選んでいます。
+    </p>
+  </main>
+
+  <script src="js/crossword-presets.js"></script>
+  <script src="js/crossword.js"></script>
+</body>
+</html>

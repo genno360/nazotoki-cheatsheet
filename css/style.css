@@ -8,6 +8,7 @@
   --accent-soft: #fde7d9;
   --empty: #ece8df;
   --radius: 12px;
+  --block: #2a2723;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +21,7 @@
     --accent: #fb923c;
     --accent-soft: #3d2614;
     --empty: #2b2925;
+    --block: #0a0908;
   }
 }
 
@@ -342,3 +344,72 @@ h1 {
   overflow: hidden;
 }
 .result-bar span { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+
+/* ---------- クロスワード盤面生成 ---------- */
+.status {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.status-ok { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.status-ng { color: var(--muted); }
+
+.board-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.board-nav[hidden] { display: none; }
+.copy-btn:disabled { opacity: 0.4; cursor: default; }
+.primary-btn:disabled { opacity: 0.6; cursor: default; }
+
+.board-wrap { overflow-x: auto; padding-bottom: 4px; }
+.board {
+  --size: min(44px, calc((100vw - 40px) / var(--cols)));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--size));
+  grid-auto-rows: var(--size);
+  gap: 0;
+  width: max-content;
+  margin: 0 auto;
+  border: 2px solid var(--text);
+}
+.board .cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: calc(var(--size) * 0.5);
+  line-height: 1;
+}
+.board .cell-black { background: var(--block); border-color: var(--block); }
+.board .cell-num {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: max(9px, calc(var(--size) * 0.22));
+  color: var(--muted);
+}
+
+.clues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.clue-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.clue-box h2 { font-size: 0.95rem; margin: 0 0 4px; }
+.clue-box ul { list-style: none; margin: 0; padding: 0; }
+.clue-box li { padding: 1px 0; }
+.clue-box b { color: var(--accent); display: inline-block; min-width: 1.4em; }
